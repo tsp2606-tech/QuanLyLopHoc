@@ -58,10 +58,15 @@ export default function Home() {
     }
 
     setStudents((prev) => {
+      const cleanedStudent = {
+        ...student,
+        name: student.name.trim(),
+        address: student.address.trim(),
+      };
       const newStudents = [
         ...prev,
         {
-          ...student,
+          ...cleanedStudent,
           id: Date.now(),
           gender: student.gender || "Male",
         },
